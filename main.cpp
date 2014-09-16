@@ -32,26 +32,6 @@ numbers are valid if you want to see them graphically represented in OpenGL
 #include "GUI_in_openGL.h"
 
 int main(int argc, char **argv){
-	//cout << euler2(4000000) << endl;
-	//char string[] = "hello"; //character array
-	//cout << reverse_string(string);
-
-	//cl obj(88);
-	/*int number[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	cout << number << endl; // outputs the memory address of number
-	cout << &number << endl; //exactly the same value
-	cout << &number[0] << endl;//same again
-	cout << number[0]; //the value in the array. i.e 31
-
-	int *pnumber = number;
-	cout << *pnumber; //31
-	cout << *(pnumber + 1); //28, could also do pnumber[1]
-	int c[] = { 5, 8, 3, 9, 4, 2 };
-	int *b = c;
-	*/
-
-	//PLEASE IGNORE ABOVE COMMENTS, THIS WAS THE MAIN PART FOR SOME OTHER PROGRAMS
-
 	//this is where the stuff I have now made global origonally went. Had to be put in Global scope to be accessed to make the GUI
 	triangle_in_circle(pointerc1, pointert1);
 	
