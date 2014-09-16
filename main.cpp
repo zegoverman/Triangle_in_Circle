@@ -34,7 +34,6 @@ numbers are valid if you want to see them graphically represented in OpenGL
 int main(int argc, char **argv){
 	//this is where the stuff I have now made global origonally went. Had to be put in Global scope to be accessed to make the GUI
 	triangle_in_circle(pointerc1, pointert1);
-	
 
 	//now display using openGL from here
 	glutInit(&argc, argv); //initalize the window
