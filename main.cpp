@@ -12,10 +12,10 @@ The algorithm works fine regardless of the numbers you put in. If you want to se
 using namespace std;
 
 #include "problem1.h"
-#include "problem2.h"
+#include "problem2.h" 
 #include "reverse_string.h"
 #include "test.h"
-#include "triangle_in_circle.h"
+#include "triangle_in_circle.h" //need to remove the four headers above this one
 
 //the co-ordinates of my default space for the GUI are -1 to +1 on the x and y axis
 triangle t1 = triangle(-0.3, 0.3, 0.5, 0.5, 0.7, -0.4); //needs to be between -1 and 1. Plus it needs to be a legitimate triangle shape. Meaning of these numbers
