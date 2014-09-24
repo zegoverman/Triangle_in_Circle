@@ -38,26 +38,3 @@ public:
 				   //not just stored in a buffer
 	}
 };
-//reshape function - for when the display window is resized
-void reshape(int width, int height)
-{
-	if (height == 0) (height = 1); //to prevent a divide by zero in the next statment
-
-	float ratio = 1.0 * width / height; //ratio of width to height
-	// Use the Projection Matrix
-	glMatrixMode(GL_PROJECTION);
-
-	// Reset Matrix
-	glLoadIdentity();
-
-	// Set the viewport to be the entire window
-	glViewport(0, 0, width, height);
-
-	// Set the correct perspective.
-	gluPerspective(45, ratio, 1, 1000); //establishes perspective parameters (1,2,3,4)
-	//1=field of view angle in the yz plane. 2=defines relation between width and height of the viewport. last 2 define near and far clipping planes.
-	//anything closer than near or further than far will be clipped from the image
-
-	// Get Back to the Modelview
-	glMatrixMode(GL_MODELVIEW);
-}
