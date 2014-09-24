@@ -11,8 +11,6 @@ The algorithm works fine regardless of the numbers you put in. If you want to se
 
 using namespace std;
 
-#include "problem1.h"
-#include "problem2.h"
 #include "reverse_string.h"
 #include "test.h"
 #include "triangle_in_circle.h"
@@ -37,7 +35,6 @@ int main(int argc, char **argv){
 	//this is where the stuff I have now made global origonally went. Had to be put in Global scope to be accessed to make the GUI
 	triangle_in_circle(pointerc1, pointert1);
 	
-
 	//now display using openGL from here
 	glutInit(&argc, argv); //initalize the window
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); //specifies the display mode (single buffer window) and (default colour mode) RGB=red,green,blue
@@ -49,17 +46,13 @@ int main(int argc, char **argv){
 	shapes *drawing;
 	shapes object_drawing;
 	drawing = &object_drawing;
-	glutDisplayFunc(drawing->draw_triangle_and_circle); 
-	
-	//glutReshapeFunc(reshape); //picture disappears if I add this at the moment.
+	glutDisplayFunc(drawing->draw_triangle_and_circle);  //without parenthesis means it is a pointer to the function rather than the function itself 
+														 //(this is what Displayfunc requires)
 
 	//This below means we can't see anything at the moment
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity(); //essentially resets the matrix to it's default 
 	glOrtho(0.0, window_width, window_height, 0.0, 0.0, 1.0); //multiplies the current matrix by this matrix. Defines the location of the clipping planes
-	
-
-	//without parenthesis means it is a pointer to the function rather than the function itself (this is what Displayfunc requires)
 	
 	glutMainLoop(); //Tells program you have finished initalising and you can now start rendering
 
