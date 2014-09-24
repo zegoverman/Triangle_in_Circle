@@ -32,7 +32,7 @@ public:
 		centre[0][1] = (float)rand() / (float)RAND_MAX;
 		radius = (float)rand() / (float)RAND_MAX;
 	}
-	circle(int x, int y, int z){
+	circle(float x, float y, float z){
 		centre[0][0] = x;
 		centre[0][1] = y;
 		radius = z;

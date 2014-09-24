@@ -8,8 +8,12 @@ public:
 	{
 		//First draw the triangle
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //clears buffers to preset values
+
+		glMatrixMode(GL_MODELVIEW); //so we are operating on the modelview matrix
+		glLoadIdentity(); //ensure the modelview matrix is at the default
+
 		glBegin(GL_TRIANGLES); //define what kind of shape I'm drawing - a triangle
-		glColor3f(0, 1, 1); // (red amount, green amount, blue amount) 0=no internsity, 1=full intensity. colour = cyan
+		glColor3f(0, 1, 1); // (red amount, green amount, blue amount) 0=no internsity, 1=full intensity. (011) = cyan
 		glVertex3f(pointert1->point[0][0], pointert1->point[0][1], 0); // (x1,y1,0) from triangle class. co-ordinates defined in glvortex as (x,y,z)
 		glVertex3f(pointert1->point[1][0], pointert1->point[1][1], 0); // (x2,y2,0)
 		glVertex3f(pointert1->point[2][0], pointert1->point[2][1], 0); // (x3,y3,0)
@@ -33,14 +37,27 @@ public:
 		glFlush(); //empties all the implementation buffers (e.g network buffer, graphics accelerator) so ensures drawing commands are actually implemented
 				   //not just stored in a buffer
 	}
-	//reshape function - for when the display window is resized
-	void reshape(int width, int height) 
-	{
-		if (height == 0) (height = 1); //to prevent a divide by zero in the next statment
-
-		float ratio = width / height; //ratio of width to height
-
-
-	}
-
 };
+//reshape function - for when the display window is resized
+void reshape(int width, int height)
+{
+	if (height == 0) (height = 1); //to prevent a divide by zero in the next statment
+
+	float ratio = 1.0 * width / height; //ratio of width to height
+	// Use the Projection Matrix
+	glMatrixMode(GL_PROJECTION);
+
+	// Reset Matrix
+	glLoadIdentity();
+
+	// Set the viewport to be the entire window
+	glViewport(0, 0, width, height);
+
+	// Set the correct perspective.
+	gluPerspective(45, ratio, 1, 1000); //establishes perspective parameters (1,2,3,4)
+	//1=field of view angle in the yz plane. 2=defines relation between width and height of the viewport. last 2 define near and far clipping planes.
+	//anything closer than near or further than far will be clipped from the image
+
+	// Get Back to the Modelview
+	glMatrixMode(GL_MODELVIEW);
+}
