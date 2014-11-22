@@ -21,6 +21,18 @@ public:
 		point[2][0] = x3;
 		point[2][1] = y3;
 	}
+	//add a function to find the max co-ordinate
+	float max_coordinate(){
+		float max_value = point[0][0]; //the maximum co-ordinate is set to the first vertex x co-ordinate initially
+		int i, j;
+		for (i = 0; i < 3; i++){
+			for (j = 0; j < 2; j++){
+				if (point[i][j] < 0) point[i][j] = -point[i][j]; //so the value is positive if it was origonally negative
+				if (point[i][j] > max_value) max_value = point[i][j];
+			}
+		}
+		return max_value; //ok, this works as expected
+	}
 };
 
 class circle{
@@ -36,6 +48,12 @@ public:
 		centre[0][0] = x;
 		centre[0][1] = y;
 		radius = z;
+	}
+	float max_coordinate(){ //finds max co-ordinate
+		float max_x = centre[0][0] + radius;
+		float max_y = centre[0][1] + radius;
+		if (max_x > max_y) return max_x;
+		else return max_y;
 	}
 };
 

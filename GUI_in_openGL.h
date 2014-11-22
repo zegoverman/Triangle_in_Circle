@@ -4,13 +4,19 @@
 
 class shapes{
 public:
+	void initilisation(){
+		glClearColor(0.0, 0.0, 0.0, 0.0);
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		//find the maximum co-ordinate so we initiliase the display window to be the right size
+		float complete_max_value;
+		if (pointert1->max_coordinate() > pointerc1->max_coordinate()) complete_max_value = pointert1->max_coordinate();
+		else complete_max_value = pointerc1->max_coordinate();
+		glOrtho(-complete_max_value, complete_max_value, -complete_max_value, complete_max_value, -complete_max_value, complete_max_value); //now works as expected
+	}
 	static void draw_triangle_and_circle() //necessary for it to be static to prevent the this pointer being passes as open gl is an C API that can't handle this
 	{
-		//First draw the triangle
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //clears buffers to preset values
-
-		glMatrixMode(GL_MODELVIEW); //so we are operating on the modelview matrix
-		glLoadIdentity(); //ensure the modelview matrix is at the default
+		glClear(GL_COLOR_BUFFER_BIT);
 
 		glBegin(GL_TRIANGLES); //define what kind of shape I'm drawing - a triangle
 		glColor3f(0, 1, 1); // (red amount, green amount, blue amount) 0=no internsity, 1=full intensity. (011) = cyan
